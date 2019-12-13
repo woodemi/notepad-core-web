@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'js/NotepadConnector.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -9,7 +11,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       home: Center(
-        child: Text('notepad-core-web'),
+        child: RaisedButton(
+          child: Text('requestDevice'),
+          onPressed: () async {
+            var device = await notepadConnector.requestDevice();
+            print('device ${device.id}, ${device.name}');
+          },
+        ),
       ),
     );
   }
