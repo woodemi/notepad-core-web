@@ -8,11 +8,17 @@ const _tag = 'NotepadConnector';
 class NotepadConnector {
   NotepadConnector._();
 
-  Future<BluetoothDevice> requestDevice() {
+  Future<void> requestDevice() {
     print('$_tag:requestDevice');
-    return Bluetooth.requestDevice(ScanOptions(
+    var requestDevice = Bluetooth.requestDevice(ScanOptions(
       acceptAllDevices: true,
-    )).toFuture();
+    ));
+    print('requestDevice $requestDevice');
+    requestDevice.then((result) {
+      print('result $result');
+    }, (error) {
+      print('error $error');
+    });
   }
 
   void connect(BluetoothDevice device) {

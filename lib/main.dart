@@ -33,8 +33,7 @@ class _HomePageState extends State<HomePage> {
           RaisedButton(
             child: Text('requestDevice'),
             onPressed: () async {
-              _device = await notepadConnector.requestDevice();
-              print('requestDevice ${_device.id}, ${_device.name}');
+              await notepadConnector.requestDevice();
             },
           ),
           Row(
