@@ -27,4 +27,13 @@ class BluetoothDevice {
   external String get id;
 
   external String get name;
+
+  external BluetoothRemoteGATTServer get gatt;
+}
+
+@JS()
+class BluetoothRemoteGATTServer {
+  external Promise<dynamic> connect();
+
+  external void disconnect();
 }
