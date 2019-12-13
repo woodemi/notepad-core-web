@@ -1,5 +1,8 @@
 file:///home/runner/work/notepad-core-web/notepad-core-web/.dart_tool/flutter_build/c60501128bb0a1f1eb3f9a42f488b299/main.dart
 file:///home/runner/work/notepad-core-web/notepad-core-web/.packages
+file:///home/runner/work/notepad-core-web/notepad-core-web/lib/js/NotepadConnector.dart
+file:///home/runner/work/notepad-core-web/notepad-core-web/lib/js/common_js.dart
+file:///home/runner/work/notepad-core-web/notepad-core-web/lib/js/notepad_core_js.dart
 file:///home/runner/work/notepad-core-web/notepad-core-web/lib/main.dart
 file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.flutter-io.cn/collection-1.14.11/lib/collection.dart
 file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.flutter-io.cn/collection-1.14.11/lib/src/algorithms.dart
@@ -21,6 +24,7 @@ file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/
 file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.flutter-io.cn/collection-1.14.11/lib/src/unmodifiable_wrappers.dart
 file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.flutter-io.cn/collection-1.14.11/lib/src/utils.dart
 file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.flutter-io.cn/collection-1.14.11/lib/src/wrappers.dart
+file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.flutter-io.cn/js-0.6.1+1/lib/js.dart
 file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.flutter-io.cn/meta-1.1.8/lib/meta.dart
 file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.flutter-io.cn/typed_data-1.1.6/lib/typed_buffers.dart
 file:///opt/hostedtoolcache/flutter/1.12.13-hotfix.6-beta/x64/.pub-cache/hosted/pub.flutter-io.cn/vector_math-2.0.8/lib/hash.dart
