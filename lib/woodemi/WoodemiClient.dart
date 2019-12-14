@@ -13,6 +13,11 @@ class WoodemiClient extends NotepadClient {
   Tuple2<String, String> get commandResponseCharacteristic => const Tuple2(SERV__COMMAND, CHAR__COMMAND_RESPONSE);
 
   @override
+  List<Tuple2<String, String>> get inputIndicationCharacteristics => [
+    commandResponseCharacteristic,
+  ];
+
+  @override
   Future<void> completeConnection() async {
     await _checkAccess();
   }

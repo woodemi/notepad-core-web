@@ -44,6 +44,7 @@ class NotepadConnector {
   Future<void> _connect(BluetoothRemoteGATTServer gatt) async {
     try {
       await _connectGatt.connect().toFuture();
+      await _notepadType.configCharacteristics();
       await _notepadClient.completeConnection();
     } catch (e) {
       print('error $e');

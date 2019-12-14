@@ -14,6 +14,13 @@ class NotepadType {
     _notepadClient.notepadType = this;
   }
 
+  Future<void> configCharacteristics() async {
+    for (var serviceCharacteristic in _notepadClient.inputIndicationCharacteristics) {
+      print('configInputCharacteristic $serviceCharacteristic, indication');
+      await _bleType.setNotifiable(serviceCharacteristic);
+    }
+  }
+
   Future<void> sendRequestAsync(String messageHead, Tuple2<String, String> serviceCharacteristic, Uint8List request) async {
     await _bleType.writeValue(serviceCharacteristic, request);
     print('on${messageHead}Send: ${hex.encode(request)}');

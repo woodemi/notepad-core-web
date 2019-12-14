@@ -10,6 +10,11 @@ class BleType {
 
   BleType(this._gatt);
 
+  Future<void> setNotifiable(Tuple2<String, String> serviceCharacteristic) async {
+    var characteristic = await _gatt.getCharacteristic(serviceCharacteristic);
+    await characteristic.startNotifications().toFuture();
+  }
+
   Future<void> writeValue(Tuple2<String, String> serviceCharacteristic, Uint8List value) async {
     var characteristic = await _gatt.getCharacteristic(serviceCharacteristic);
     await characteristic.writeValue(value).toFuture();
