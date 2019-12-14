@@ -67,5 +67,7 @@ class BluetoothRemoteGATTService {
 
 @JS()
 class BluetoothRemoteGATTCharacteristic {
+  external Promise<dynamic> startNotifications();
+
   external Promise<dynamic> writeValue(Uint8List bytes);
 }
