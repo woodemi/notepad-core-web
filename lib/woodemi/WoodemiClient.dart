@@ -1,9 +1,16 @@
 import 'dart:typed_data';
 
-import 'package:notepad_core_web/NotepadClient.dart';
 import 'package:tuple/tuple.dart';
 
+import '../NotepadClient.dart';
 import 'Woodemi.dart';
+
+enum AccessResult {
+  Denied,      // Device claimed by other user
+  Confirmed,   // Access confirmed, indicating device not claimed by anyone
+  Unconfirmed, // Access unconfirmed, as user doesn't confirm before timeout
+  Approved     // Device claimed by this user
+}
 
 class WoodemiClient extends NotepadClient {
   @override
@@ -19,11 +26,28 @@ class WoodemiClient extends NotepadClient {
 
   @override
   Future<void> completeConnection() async {
-    await _checkAccess();
+    var accessResult = await _checkAccess(defaultAuthToken, 10);
+    print('_checkAccess $accessResult');
   }
 
-  Future<void> _checkAccess() async {
-    var request = Uint8List.fromList([0x01, 0x0A, 0x00, 0x00, 0x00, 0x01]);
-    await notepadType.sendRequestAsync('Command', commandRequestCharacteristic, request);
+  Future<AccessResult> _checkAccess(Uint8List authToken, int seconds) async {
+    var command = WoodemiCommand(
+      request: Uint8List.fromList([0x01, seconds] + authToken),
+      intercept: (data) => data.first == 0x02,
+      handle: (data) => data[1],
+    );
+    var response = await notepadType.executeCommand(command);
+    switch(response) {
+      case 0x00:
+        return AccessResult.Denied;
+      case 0x01:
+        var confirm = await notepadType.receiveResponseAsync('Confirm',
+            commandResponseCharacteristic, (value) => value.first == 0x03);
+        return confirm[1] == 0x00 ? AccessResult.Confirmed : AccessResult.Unconfirmed;
+      case 0x02:
+        return AccessResult.Approved;
+      default:
+        throw Exception('Unknown error');
+    }
   }
 }
