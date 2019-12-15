@@ -67,7 +67,13 @@ class BluetoothRemoteGATTService {
 
 @JS()
 class BluetoothRemoteGATTCharacteristic {
+  external dynamic get uuid;
+
+  external ByteData get value;
+
   external Promise<dynamic> startNotifications();
+
+  external void addEventListener(String type, listener(dynamic event), [bool useCapture]);
 
   external Promise<dynamic> writeValue(Uint8List bytes);
 }

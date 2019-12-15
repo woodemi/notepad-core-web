@@ -4,6 +4,7 @@ library common_js;
 import 'dart:async';
 
 import 'package:js/js.dart';
+import 'package:js/js_util.dart' as js_util;
 
 @JS()
 class Promise<T> {
@@ -15,8 +16,15 @@ class Promise<T> {
 extension Promise2Future<T> on Promise<T> {
   Future<T> toFuture() {
     final c = Completer<T>();
-    this.then(
-        (result) => c.complete(result), (error) => c.completeError(error));
+    then(allowInterop(c.complete), allowInterop(c.completeError));
     return c.future;
   }
 }
+
+// Utility method to mask the typed JS facade as JSObject
+T callMethod<T>(object, String method, List args) =>
+    js_util.callMethod(object, method, args) as T;
+
+// Utility method to mask the typed JS facade as JSObject
+T getProperty<T>(object, String name) =>
+    js_util.getProperty(object, name) as T;
